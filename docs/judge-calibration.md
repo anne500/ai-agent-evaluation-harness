@@ -1,7 +1,10 @@
 # 🧑‍⚖️ Extension 3: judge calibration diagnostics
 
-**🟢 Implemented; all 41 offline tests passed on Linux, Python 3.12.14.
-🟡 First Windows calibration-model run is pending.**
+**🟢 Verified: 41 tests passed on Linux (Python 3.12.14) and Windows
+(Python 3.14.4). The first real Windows run produced 7/8 agreement, one false
+negative and zero judge errors; its saved report has been inspected.**
+
+See the [calibration audit and colored confusion matrix](calibration-verification-20261109.md).
 
 The judge scores eight fixed, labeled synthetic examples. No agent is invoked.
 This separates evaluator behavior from agent generation and preserves the
@@ -150,4 +153,4 @@ sole release gate.
 
 The existing suite has 26 execution/report tests plus 15 calibration tests.
 All offline model responses are fabricated test fixtures, not measured judge
-results. Real model results will be recorded only after the Windows run.
+results. Real model results are recorded in the [November 9 calibration audit](calibration-verification-20261109.md).
