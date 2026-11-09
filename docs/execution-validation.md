@@ -1,7 +1,11 @@
 # 🔧 Extension 1: validate tool execution evidence
 
-**Status: implemented; 15 offline synthetic-trace tests passed on Linux,
-Python 3.12.14. Windows model-driven execution is pending.**
+**Status: verified in one Windows model-driven run: 4/4 cases passed, zero
+agent/trace errors, exit code 0. All 15 offline checker tests passed on Windows
+and Linux (Python 3.12.14). Windows used Python 3.14.4.**
+
+See the [November 9 Windows evidence record](windows-execution-20261109.md).
+The model judge was not invoked; its earlier disagreement remains recorded.
 
 This extension adds a separate deterministic runner. The original
 [eval.py](../eval.py), its model judge, snapshots, and recorded results remain
