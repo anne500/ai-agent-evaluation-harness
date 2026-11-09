@@ -88,8 +88,10 @@ wall-clock timeout. The runner prints before each case so a slow invocation
 is visible.
 
 The runner exits 0 only when all four cases pass. It reports invocation and
-trace exceptions separately. It prints JSON reports to the console but does
-not yet save structured JSON files or generation metadata.
+trace exceptions separately. Extension 2 now adds checkpointed JSON reports
+and returned-message generation metadata; see the [structured evidence guide](structured-evidence.md).
+The 4/4 Windows evidence above predates that persistence change; a new Windows
+verification of JSON reporting is pending.
 
 ## 🟪 Why this matters for BRI
 
