@@ -22,7 +22,7 @@ The badges report the latest recorded four-case run, not live CI status.
 
 > **📍 Current checkpoint:** tutorial sequence completed with documented adaptations.
 > Execution validation passed 15 Windows offline tests and one four-case model run.
-> Judge calibration is implemented with offline tests; its first Windows model run is pending.
+> Judge calibration is verified: one inspected run gave 7/8 agreement and one false negative.
 > Repeated runs and BRI cases are planned extensions.
 
 ## 🧭 Explore the project
@@ -283,8 +283,15 @@ The [calibration runner](eval_calibration.py) saves raw responses and reports
 agreement, disagreements, confusion-matrix counts, and judge errors separately.
 It rejects length-truncated verdicts and does not retry.
 
-🟢 **41 offline tests passed on Linux.** 🟡 First real Windows calibration run pending.
+🟢 **41 offline tests passed on Linux and Windows.** The inspected calibration run
+returned **7/8 agreement**, one false negative and zero judge errors.
 These authored fixtures are a small diagnostic, not a held-out research benchmark.
+
+![Inspected calibration confusion matrix: 3 true positives, 1 false negative, 0 false positives, 4 true negatives](docs/assets/calibration-confusion-matrix.svg)
+
+[Read the calibration evidence audit](docs/calibration-verification-20261109.md).
+The required tool request was present in the false-negative fixture; its NO
+verdict is preserved rather than relabeled as a pass.
 
 [Colored flow diagram, fixtures, metrics, and Windows commands](docs/judge-calibration.md).
 
@@ -300,7 +307,7 @@ These authored fixtures are a small diagnostic, not a held-out research benchmar
 | 4. Visual GitHub documentation | ✅ Included here | Architecture, results, verdict flow, and evidence map |
 | 5. Execution validation | ✅ Verified in one Windows run | 15 offline tests; 4/4 agent cases with exact arguments, paired results, status and values |
 | 6. Structured evidence | ✅ Windows report inspected | 26 tests; 4/4 run; saved traces, timing, metadata and source hashes verified |
-| 7. Judge calibration | 🟡 Implemented; Linux tests passed | Eight labeled fixtures, strict verdicts, error separation and confusion matrix; Windows run pending |
+| 7. Judge calibration | ✅ Windows report inspected | 41 tests; 7/8 agreement, one false negative, zero judge errors |
 | 8. Repeated runs and model comparison | 🟠 Planned extension | Variation and reproducibility analysis |
 | 9. BRI evaluation cases | 🟪 Planned research adaptation | Build-failure diagnosis and release-evidence evaluation |
 
@@ -324,7 +331,7 @@ time, counting, and general-knowledge cases, not BRI experiments or thesis resul
 | 🛠️ Adaptations | Model environment variables, separate summaries, strict verdict parsing, errors, recursion limit, tool evidence, bounded judge |
 | 🔧 Verified extension | Separate execution runner: 15 Windows offline tests and 4/4 model-driven cases; no judge |
 | 📦 Verified extension | JSON evidence and partial-run checkpoints; 26 Windows tests and one inspected 4/4 report |
-| 🧑‍⚖️ Implemented extension | Judge calibration diagnostics; offline tests passed, real model run pending |
+| 🧑‍⚖️ Verified extension | Judge calibration: 41 Windows tests and inspected 7/8 diagnostic agreement |
 | 🔬 Future extensions | Repeated runs, broader model comparisons, and BRI cases |
 
 The agent does not use session memory or persistent storage. When adapting the
