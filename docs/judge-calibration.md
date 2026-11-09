@@ -161,3 +161,10 @@ Three additional unchanged trials were inspected: each produced 7/8 agreement,
 the same requested_yes false negative, and zero judge errors.
 See the [repeat-batch audit and verdict grid](calibration-repeats-20261109.md).
 The original run remains separate; all four reused the same eight fixtures.
+
+## 🔎 Exploratory second-model follow-up
+
+One inspected llama3.2:3b run returned 6/8 agreement with false negatives on
+count_yes and requested_yes. The prompts match Qwen's; only the recorded model
+selection differs. See the [comparison and limitations](judge-model-comparison-20261109.md).
+This small unequal-repetition comparison establishes no general model ranking.
