@@ -90,8 +90,9 @@ is visible.
 The runner exits 0 only when all four cases pass. It reports invocation and
 trace exceptions separately. Extension 2 now adds checkpointed JSON reports
 and returned-message generation metadata; see the [structured evidence guide](structured-evidence.md).
-The 4/4 Windows evidence above predates that persistence change; a new Windows
-verification of JSON reporting is pending.
+The first 4/4 Windows evidence above predates that persistence change.
+The subsequent [structured report audit](structured-evidence-verification-20261109.md)
+verifies another 4/4 Windows run with JSON persistence.
 
 ## 🟪 Why this matters for BRI
 
