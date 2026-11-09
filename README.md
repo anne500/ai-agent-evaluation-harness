@@ -23,7 +23,7 @@ The badges report the latest recorded four-case run, not live CI status.
 > **📍 Current checkpoint:** tutorial sequence completed with documented adaptations.
 > Execution validation passed 15 Windows offline tests and one four-case model run.
 > Judge calibration is verified: one inspected run gave 7/8 agreement and one false negative.
-> Repeated runs and BRI cases are planned extensions.
+> Three same-model repeats are verified; broader model comparisons and BRI cases remain planned.
 
 ## 🧭 Explore the project
 
@@ -295,6 +295,21 @@ verdict is preserved rather than relabeled as a pass.
 
 [Colored flow diagram, fixtures, metrics, and Windows commands](docs/judge-calibration.md).
 
+## 🔁 Repeated calibration observations
+
+Three additional trials preserved the fixtures, prompts and judge settings.
+Each returned **7/8 agreement**, the same `requested_yes` false negative,
+and zero judge errors. Their saved reports and batch summary were inspected.
+
+![Stable verdict pattern across the original diagnostic and three new trials](docs/assets/calibration-repeat-grid.svg)
+
+[Read the repeat-batch evidence audit](docs/calibration-repeats-20261109.md).
+
+The false negative occurred in all four recorded calibration runs. These are
+repeated observations of eight fixtures; they do not add independent cases
+or establish general reliability. Further identical reruns are unnecessary
+for this checkpoint.
+
 ## 🧭 Learning and extension roadmap
 
 **🟦 Learn AI · 🟩 Portfolio evidence · 🟪 PhD relevance · 🟠 Planned work**
@@ -308,7 +323,7 @@ verdict is preserved rather than relabeled as a pass.
 | 5. Execution validation | ✅ Verified in one Windows run | 15 offline tests; 4/4 agent cases with exact arguments, paired results, status and values |
 | 6. Structured evidence | ✅ Windows report inspected | 26 tests; 4/4 run; saved traces, timing, metadata and source hashes verified |
 | 7. Judge calibration | ✅ Windows report inspected | 41 tests; 7/8 agreement, one false negative, zero judge errors |
-| 8. Repeated runs and model comparison | 🟠 Planned extension | Variation and reproducibility analysis |
+| 8. Repeated runs and model comparison | ✅ Three same-model repeats inspected; comparison deferred | 7/8 agreement each; same false negative in all three |
 | 9. BRI evaluation cases | 🟪 Planned research adaptation | Build-failure diagnosis and release-evidence evaluation |
 
 ### 🟪 Connection to Build Release and Integration Engineering
@@ -332,7 +347,8 @@ time, counting, and general-knowledge cases, not BRI experiments or thesis resul
 | 🔧 Verified extension | Separate execution runner: 15 Windows offline tests and 4/4 model-driven cases; no judge |
 | 📦 Verified extension | JSON evidence and partial-run checkpoints; 26 Windows tests and one inspected 4/4 report |
 | 🧑‍⚖️ Verified extension | Judge calibration: 41 Windows tests and inspected 7/8 diagnostic agreement |
-| 🔬 Future extensions | Repeated runs, broader model comparisons, and BRI cases |
+| 🔁 Verified extension | Three same-model repeats inspected; same 7/8 pattern in each |
+| 🔬 Future extensions | Broader model comparisons and BRI cases |
 
 The agent does not use session memory or persistent storage. When adapting the
 previous memory-enabled agent, use unique thread IDs for independent cases,
