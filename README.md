@@ -23,7 +23,8 @@ The badges report the latest recorded four-case run, not live CI status.
 > **📍 Current checkpoint:** tutorial sequence completed with documented adaptations.
 > Execution validation passed 15 Windows offline tests and one four-case model run.
 > Judge calibration is verified: one inspected run gave 7/8 agreement and one false negative.
-> Three same-model repeats are verified; broader model comparisons and BRI cases remain planned.
+> Three same-model repeats and one exploratory second-model comparison are verified.
+> BRI cases and broader benchmarking remain planned.
 
 ## 🧭 Explore the project
 
@@ -310,6 +311,19 @@ repeated observations of eight fixtures; they do not add independent cases
 or establish general reliability. Further identical reruns are unnecessary
 for this checkpoint.
 
+## 🔎 Exploratory judge-model comparison
+
+| Judge | Runs | Agreement per run | False-negative fixtures |
+| --- | ---: | --- | --- |
+| Qwen 3.5 4B | 4 | 7/8 | `requested_yes` |
+| Llama 3.2 3B | 1 | 6/8 | `count_yes`, `requested_yes` |
+
+All saved prompts and fixtures match; the recorded configuration differs only
+in the requested model. Both judges returned valid verdicts without errors.
+Unequal repetitions on eight authored fixtures do not establish a general ranking.
+
+[Inspected report, colored verdict comparison and limitations](docs/judge-model-comparison-20261109.md).
+
 ## 🧭 Learning and extension roadmap
 
 **🟦 Learn AI · 🟩 Portfolio evidence · 🟪 PhD relevance · 🟠 Planned work**
@@ -323,7 +337,7 @@ for this checkpoint.
 | 5. Execution validation | ✅ Verified in one Windows run | 15 offline tests; 4/4 agent cases with exact arguments, paired results, status and values |
 | 6. Structured evidence | ✅ Windows report inspected | 26 tests; 4/4 run; saved traces, timing, metadata and source hashes verified |
 | 7. Judge calibration | ✅ Windows report inspected | 41 tests; 7/8 agreement, one false negative, zero judge errors |
-| 8. Repeated runs and model comparison | ✅ Three same-model repeats inspected; comparison deferred | 7/8 agreement each; same false negative in all three |
+| 8. Repeated runs and model comparison | ✅ Repeat and exploratory comparison reports inspected | Qwen: 7/8 each in four runs; Llama: 6/8 in one run; same eight fixtures |
 | 9. BRI evaluation cases | 🟪 Planned research adaptation | Build-failure diagnosis and release-evidence evaluation |
 
 ### 🟪 Connection to Build Release and Integration Engineering
@@ -348,7 +362,8 @@ time, counting, and general-knowledge cases, not BRI experiments or thesis resul
 | 📦 Verified extension | JSON evidence and partial-run checkpoints; 26 Windows tests and one inspected 4/4 report |
 | 🧑‍⚖️ Verified extension | Judge calibration: 41 Windows tests and inspected 7/8 diagnostic agreement |
 | 🔁 Verified extension | Three same-model repeats inspected; same 7/8 pattern in each |
-| 🔬 Future extensions | Broader model comparisons and BRI cases |
+| 🔎 Verified extension | One exploratory Llama judge run inspected: 6/8 agreement; no general ranking |
+| 🔬 Future extensions | Broader benchmarking and BRI cases |
 
 The agent does not use session memory or persistent storage. When adapting the
 previous memory-enabled agent, use unique thread IDs for independent cases,
