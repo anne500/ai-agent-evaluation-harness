@@ -225,6 +225,7 @@ The separate execution runner reuses that same agent configuration.
 | [Verification record](docs/tutorial-verification.md) | Results, diagnostic observations, and scope |
 | [requirements.txt](requirements.txt) | Pinned dependency versions |
 | [Execution guide](docs/execution-validation.md) | Extension checks, offline tests, and model-run instructions |
+| [Structured evidence guide](docs/structured-evidence.md) | JSON fields, checkpoint lifecycle, recovery, and report inspection |
 
 The initial basic-prompt run and separate diagnostics are documented from supplied
 terminal transcripts; standalone logs for them are not included.
@@ -251,6 +252,21 @@ This is one recorded agent run, not a reliability estimate. No judge was invoked
 This runner does not invoke an LLM judge. The results and chart above remain
 the recorded tutorial runs, not results from the new extension.
 
+## 📦 Structured JSON evidence
+
+The [execution runner](eval_execution.py) now checkpoints a versioned JSON report
+under `results/<run-id>/report.json`. It records call arguments, result IDs,
+invocation bounds, per-message model metadata, source hashes, and outcomes.
+
+🟢 **26 offline tests passed on Linux.** 🟡 Windows tests and real model-report
+verification are pending. Earlier 4/4 Windows execution evidence refers to the
+runner before JSON persistence was added.
+
+[Illustrated guide and report inspection commands](docs/structured-evidence.md).
+
+Generated reports are ignored by Git until deliberately shared. No LLM judge is
+invoked by this runner, and the historical results chart remains unchanged.
+
 ## 🧭 Learning and extension roadmap
 
 **🟦 Learn AI · 🟩 Portfolio evidence · 🟪 PhD relevance · 🟠 Planned work**
@@ -262,7 +278,7 @@ the recorded tutorial runs, not results from the new extension.
 | 3. Judge diagnostics and bounds | ✅ Recorded adaptation | Empty-output evidence and bounded judge configuration |
 | 4. Visual GitHub documentation | ✅ Included here | Architecture, results, verdict flow, and evidence map |
 | 5. Execution validation | ✅ Verified in one Windows run | 15 offline tests; 4/4 agent cases with exact arguments, paired results, status and values |
-| 6. Structured evidence | 🟠 Planned extension | Per-case JSON results, timing, metadata, and configuration |
+| 6. Structured evidence | 🟡 Implemented; Linux offline tests passed | Versioned JSON, traces, timing, provenance; Windows model-run verification pending |
 | 7. Judge calibration | 🟠 Planned extension | Known positive/negative examples and disagreement analysis |
 | 8. Repeated runs and model comparison | 🟠 Planned extension | Variation and reproducibility analysis |
 | 9. BRI evaluation cases | 🟪 Planned research adaptation | Build-failure diagnosis and release-evidence evaluation |
@@ -286,7 +302,8 @@ time, counting, and general-knowledge cases, not BRI experiments or thesis resul
 | 📘 Tutorial sequence | Basic agent, fixed cases, keyword/tool checks, YES/NO judge, prompt update and rerun |
 | 🛠️ Adaptations | Model environment variables, separate summaries, strict verdict parsing, errors, recursion limit, tool evidence, bounded judge |
 | 🔧 Verified extension | Separate execution runner: 15 Windows offline tests and 4/4 model-driven cases; no judge |
-| 🔬 Future extensions | Structured evidence, calibration, repeated runs, and BRI cases |
+| 📦 Implemented extension | JSON evidence and partial-run checkpoints; Linux offline tests passed; Windows verification pending |
+| 🔬 Future extensions | Judge calibration, repeated runs, and BRI cases |
 
 The agent does not use session memory or persistent storage. When adapting the
 previous memory-enabled agent, use unique thread IDs for independent cases,
