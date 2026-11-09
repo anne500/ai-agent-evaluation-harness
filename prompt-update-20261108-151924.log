@@ -1,0 +1,29 @@
+
+CASE 1: What time is it right now?
+Answer: It is currently 3:19 PM on November 8, 2026 (15:19:51).
+Requested tools: ['current_time']
+Rules: keyword=True, tool=True
+Judge: YES
+
+CASE 2: How many words are in: "LangChain makes tool calling easier"
+Answer: There are 5 words in: "LangChain makes tool calling easier"
+Requested tools: ['word_count']
+Rules: keyword=True, tool=True
+Judge: YES
+
+CASE 3: What is the capital of France?
+Answer: The capital of France is Paris.
+Requested tools: []
+Rules: keyword=True, tool=True
+Judge: YES
+
+CASE 4: How many words are in 'LangChain makes tool calling easier'? Avoid tool use
+Answer: There are 5 words in 'LangChain makes tool calling easier'.
+Requested tools: ['word_count']
+Rules: keyword=True, tool=True
+Judge: NO
+
+Deterministic passes: 4/4
+Judge YES:           3/4
+Combined passes:     3/4
+Agent errors: 0; judge errors: 0
