@@ -55,6 +55,6 @@ The two-tool baseline has no checkpointer or persistent storage.
 ## Next extensions
 
 - ✅ Execution extension verified separately: 15 Windows tests and 4/4 model-driven cases; see [Windows evidence](windows-execution-20261109.md).
-- Save structured results and generation metadata.
+- ✅ Structured JSON evidence verified: 26 Windows tests and an inspected 4/4 run; see [report audit](structured-evidence-verification-20261109.md).
 - Calibrate the judge against known positive and negative examples.
 - Add repeated runs and Build Release and Integration cases.
