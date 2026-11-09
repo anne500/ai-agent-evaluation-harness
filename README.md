@@ -22,7 +22,8 @@ The badges report the latest recorded four-case run, not live CI status.
 
 > **📍 Current checkpoint:** tutorial sequence completed with documented adaptations.
 > Execution validation passed 15 Windows offline tests and one four-case model run.
-> Judge calibration, repeated runs, and BRI cases are planned extensions.
+> Judge calibration is implemented with offline tests; its first Windows model run is pending.
+> Repeated runs and BRI cases are planned extensions.
 
 ## 🧭 Explore the project
 
@@ -226,6 +227,7 @@ The separate execution runner reuses that same agent configuration.
 | [requirements.txt](requirements.txt) | Pinned dependency versions |
 | [Execution guide](docs/execution-validation.md) | Extension checks, offline tests, and model-run instructions |
 | [Structured evidence guide](docs/structured-evidence.md) | JSON fields, checkpoint lifecycle, recovery, and report inspection |
+| [Judge calibration guide](docs/judge-calibration.md) | Labeled fixtures, confusion matrix, errors, and judge-run commands |
 
 The initial basic-prompt run and separate diagnostics are documented from supplied
 terminal transcripts; standalone logs for them are not included.
@@ -271,6 +273,21 @@ This is one inspected report, not a reliability estimate.
 Generated reports are ignored by Git until deliberately shared. No LLM judge is
 invoked by this runner, and the historical results chart remains unchanged.
 
+## 🧑‍⚖️ Judge calibration diagnostics
+
+[Eight fixed synthetic examples](judge_calibration.py) test answer quality,
+recorded tool requests, and successful execution. Four labels are YES and four NO.
+Expected labels are withheld from judge input.
+
+The [calibration runner](eval_calibration.py) saves raw responses and reports
+agreement, disagreements, confusion-matrix counts, and judge errors separately.
+It rejects length-truncated verdicts and does not retry.
+
+🟢 **41 offline tests passed on Linux.** 🟡 First real Windows calibration run pending.
+These authored fixtures are a small diagnostic, not a held-out research benchmark.
+
+[Colored flow diagram, fixtures, metrics, and Windows commands](docs/judge-calibration.md).
+
 ## 🧭 Learning and extension roadmap
 
 **🟦 Learn AI · 🟩 Portfolio evidence · 🟪 PhD relevance · 🟠 Planned work**
@@ -283,7 +300,7 @@ invoked by this runner, and the historical results chart remains unchanged.
 | 4. Visual GitHub documentation | ✅ Included here | Architecture, results, verdict flow, and evidence map |
 | 5. Execution validation | ✅ Verified in one Windows run | 15 offline tests; 4/4 agent cases with exact arguments, paired results, status and values |
 | 6. Structured evidence | ✅ Windows report inspected | 26 tests; 4/4 run; saved traces, timing, metadata and source hashes verified |
-| 7. Judge calibration | 🟠 Planned extension | Known positive/negative examples and disagreement analysis |
+| 7. Judge calibration | 🟡 Implemented; Linux tests passed | Eight labeled fixtures, strict verdicts, error separation and confusion matrix; Windows run pending |
 | 8. Repeated runs and model comparison | 🟠 Planned extension | Variation and reproducibility analysis |
 | 9. BRI evaluation cases | 🟪 Planned research adaptation | Build-failure diagnosis and release-evidence evaluation |
 
@@ -307,7 +324,8 @@ time, counting, and general-knowledge cases, not BRI experiments or thesis resul
 | 🛠️ Adaptations | Model environment variables, separate summaries, strict verdict parsing, errors, recursion limit, tool evidence, bounded judge |
 | 🔧 Verified extension | Separate execution runner: 15 Windows offline tests and 4/4 model-driven cases; no judge |
 | 📦 Verified extension | JSON evidence and partial-run checkpoints; 26 Windows tests and one inspected 4/4 report |
-| 🔬 Future extensions | Judge calibration, repeated runs, and BRI cases |
+| 🧑‍⚖️ Implemented extension | Judge calibration diagnostics; offline tests passed, real model run pending |
+| 🔬 Future extensions | Repeated runs, broader model comparisons, and BRI cases |
 
 The agent does not use session memory or persistent storage. When adapting the
 previous memory-enabled agent, use unique thread IDs for independent cases,
