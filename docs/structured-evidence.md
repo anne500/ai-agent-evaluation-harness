@@ -1,7 +1,11 @@
 # 📦 Extension 2: structured execution evidence
 
-**🟢 Implemented and tested offline: 26 tests passed on Linux, Python 3.12.14.
-🟡 Windows tests and a real Ollama JSON-report run are pending.**
+**🟢 Verified: 26 tests passed on Linux (Python 3.12.14) and Windows
+(Python 3.14.4). One real Windows Ollama run passed 4/4 cases; its saved JSON
+report has been inspected and its execution checks independently recomputed.**
+
+See the [structured evidence verification](structured-evidence-verification-20261109.md)
+for metadata, source-hash comparisons, and limitations.
 
 The existing execution runner now writes a versioned UTF-8 JSON report per run.
 It still evaluates the same four cases without invoking an LLM judge.
@@ -138,6 +142,5 @@ This provides inspectable per-case evidence rather than only aggregate counts.
 It supports future error analysis and reproducibility work in Build Release
 and Integration Engineering. It is not an immutable evidence store.
 
-Next: verify the real Windows report, then add judge calibration with known
-positive and negative examples. The earlier tutorial judge disagreement stays
+Next: add judge calibration with known positive and negative examples. The earlier tutorial judge disagreement stays
 in the historical record.
