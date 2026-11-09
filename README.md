@@ -258,9 +258,13 @@ The [execution runner](eval_execution.py) now checkpoints a versioned JSON repor
 under `results/<run-id>/report.json`. It records call arguments, result IDs,
 invocation bounds, per-message model metadata, source hashes, and outcomes.
 
-🟢 **26 offline tests passed on Linux.** 🟡 Windows tests and real model-report
-verification are pending. Earlier 4/4 Windows execution evidence refers to the
-runner before JSON persistence was added.
+🟢 **26 offline tests passed on Linux and Windows.** A real Windows run passed
+**4/4** with JSON persistence. The supplied report's traces and metadata were
+inspected, its execution checks recomputed, and all six source hashes matched
+the recorded commit with the Windows checkout's formatting.
+
+[Read the structured evidence audit](docs/structured-evidence-verification-20261109.md).
+This is one inspected report, not a reliability estimate.
 
 [Illustrated guide and report inspection commands](docs/structured-evidence.md).
 
@@ -278,7 +282,7 @@ invoked by this runner, and the historical results chart remains unchanged.
 | 3. Judge diagnostics and bounds | ✅ Recorded adaptation | Empty-output evidence and bounded judge configuration |
 | 4. Visual GitHub documentation | ✅ Included here | Architecture, results, verdict flow, and evidence map |
 | 5. Execution validation | ✅ Verified in one Windows run | 15 offline tests; 4/4 agent cases with exact arguments, paired results, status and values |
-| 6. Structured evidence | 🟡 Implemented; Linux offline tests passed | Versioned JSON, traces, timing, provenance; Windows model-run verification pending |
+| 6. Structured evidence | ✅ Windows report inspected | 26 tests; 4/4 run; saved traces, timing, metadata and source hashes verified |
 | 7. Judge calibration | 🟠 Planned extension | Known positive/negative examples and disagreement analysis |
 | 8. Repeated runs and model comparison | 🟠 Planned extension | Variation and reproducibility analysis |
 | 9. BRI evaluation cases | 🟪 Planned research adaptation | Build-failure diagnosis and release-evidence evaluation |
@@ -302,7 +306,7 @@ time, counting, and general-knowledge cases, not BRI experiments or thesis resul
 | 📘 Tutorial sequence | Basic agent, fixed cases, keyword/tool checks, YES/NO judge, prompt update and rerun |
 | 🛠️ Adaptations | Model environment variables, separate summaries, strict verdict parsing, errors, recursion limit, tool evidence, bounded judge |
 | 🔧 Verified extension | Separate execution runner: 15 Windows offline tests and 4/4 model-driven cases; no judge |
-| 📦 Implemented extension | JSON evidence and partial-run checkpoints; Linux offline tests passed; Windows verification pending |
+| 📦 Verified extension | JSON evidence and partial-run checkpoints; 26 Windows tests and one inspected 4/4 report |
 | 🔬 Future extensions | Judge calibration, repeated runs, and BRI cases |
 
 The agent does not use session memory or persistent storage. When adapting the
