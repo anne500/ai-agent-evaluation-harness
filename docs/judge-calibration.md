@@ -154,3 +154,10 @@ sole release gate.
 The existing suite has 26 execution/report tests plus 15 calibration tests.
 All offline model responses are fabricated test fixtures, not measured judge
 results. Real model results are recorded in the [November 9 calibration audit](calibration-verification-20261109.md).
+
+## 🔁 Repeated-run follow-up
+
+Three additional unchanged trials were inspected: each produced 7/8 agreement,
+the same requested_yes false negative, and zero judge errors.
+See the [repeat-batch audit and verdict grid](calibration-repeats-20261109.md).
+The original run remains separate; all four reused the same eight fixtures.
