@@ -77,6 +77,11 @@ For Case 4, the keyword check is skipped because the configured keyword is
 
 **Single observed runs. Four cases per configuration. No reliability estimate.**
 
+![Comparison of rule passes, judge YES verdicts, and judge errors across four recorded runs](docs/assets/evaluation-results.svg)
+
+Blue shows rule passes, purple shows judge YES, and amber shows judge errors.
+Errors are unavailable evaluations; the series are separate measures, not additive totals.
+
 | Stage | Agent prompt | Judge evidence/configuration | 🟦 Rule passes | 🟪 YES | 🔴 Judge errors |
 | --- | --- | --- | ---: | ---: | ---: |
 | ① Baseline | Basic | Answer only | 3/4 | 3/4 | 0 |
