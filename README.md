@@ -21,7 +21,8 @@ The badges report the latest recorded four-case run, not live CI status.
 | Compare rules with model judgment | Preserve failures and disagreements | Separate system behavior from evaluator behavior |
 
 > **📍 Current checkpoint:** tutorial sequence completed with documented adaptations.
-> Execution validation, judge calibration, repeated runs, and BRI cases are planned extensions.
+> Execution validation is implemented with offline tests; its Windows model run is pending.
+> Judge calibration, repeated runs, and BRI cases are planned extensions.
 
 ## 🧭 Explore the project
 
@@ -207,6 +208,7 @@ Other model combinations have not been systematically evaluated here.
 
 The client timeout setting is not a total wall-clock deadline for the full suite.
 The agent has no explicit generation cap or client timeout in this checkpoint.
+The separate execution runner reuses that same agent configuration.
 
 ## 🗂️ Evidence map
 
@@ -222,10 +224,29 @@ The agent has no explicit generation cap or client timeout in this checkpoint.
 | [Bounded-judge log](bounded-judge-20261109-000546.log) | Latest recorded four-case run |
 | [Verification record](docs/tutorial-verification.md) | Results, diagnostic observations, and scope |
 | [requirements.txt](requirements.txt) | Pinned dependency versions |
+| [Execution guide](docs/execution-validation.md) | Extension checks, offline tests, and model-run instructions |
 
 The initial basic-prompt run and separate diagnostics are documented from supplied
 terminal transcripts; standalone logs for them are not included.
 Snapshots preserve source versions. Rerunning them may produce different outputs.
+
+## 🔧 Execution-validation extension
+
+The separate [execution runner](eval_execution.py) adds exact argument checks,
+call/result pairing, error-status rejection, and tool-value validation.
+[Read the illustrated extension guide](docs/execution-validation.md).
+
+| 🟢 Verified offline | 🟡 Pending verification |
+| --- | --- |
+| 15 synthetic-trace tests passed on Linux, Python 3.12.14 | Windows offline test run and four-case Ollama execution run |
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -u .\eval_execution.py
+```
+
+This runner does not invoke an LLM judge. The results and chart above remain
+the recorded tutorial runs, not results from the new extension.
 
 ## 🧭 Learning and extension roadmap
 
@@ -237,7 +258,7 @@ Snapshots preserve source versions. Rerunning them may produce different outputs
 | 2. Prompt change and rerun | ✅ Recorded | Missing tool request corrected in observed run |
 | 3. Judge diagnostics and bounds | ✅ Recorded adaptation | Empty-output evidence and bounded judge configuration |
 | 4. Visual GitHub documentation | ✅ Included here | Architecture, results, verdict flow, and evidence map |
-| 5. Execution validation | 🟠 Planned extension | Arguments, matching results, and successful execution |
+| 5. Execution validation | 🟡 Implemented; offline checks passed | Exact arguments, paired results, status and values; Windows model run pending |
 | 6. Structured evidence | 🟠 Planned extension | Per-case JSON results, timing, metadata, and configuration |
 | 7. Judge calibration | 🟠 Planned extension | Known positive/negative examples and disagreement analysis |
 | 8. Repeated runs and model comparison | 🟠 Planned extension | Variation and reproducibility analysis |
@@ -261,7 +282,8 @@ time, counting, and general-knowledge cases, not BRI experiments or thesis resul
 | --- | --- |
 | 📘 Tutorial sequence | Basic agent, fixed cases, keyword/tool checks, YES/NO judge, prompt update and rerun |
 | 🛠️ Adaptations | Model environment variables, separate summaries, strict verdict parsing, errors, recursion limit, tool evidence, bounded judge |
-| 🔬 Future extensions | Execution validation, structured evidence, calibration, repeated runs, and BRI cases |
+| 🔧 Implemented extension | Separate execution runner and 15 offline checker tests; model-driven run pending |
+| 🔬 Future extensions | Structured evidence, calibration, repeated runs, and BRI cases |
 
 The agent does not use session memory or persistent storage. When adapting the
 previous memory-enabled agent, use unique thread IDs for independent cases,
