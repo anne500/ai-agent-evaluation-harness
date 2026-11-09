@@ -24,7 +24,8 @@ The badges report the latest recorded four-case run, not live CI status.
 > Execution validation passed 15 Windows offline tests and one four-case model run.
 > Judge calibration is verified: one inspected run gave 7/8 agreement and one false negative.
 > Three same-model repeats and one exploratory second-model comparison are verified.
-> BRI cases and broader benchmarking remain planned.
+> A synthetic BRI pilot is implemented with offline tests; its first Windows model run is pending.
+> Real-build studies and broader benchmarking remain planned.
 
 ## 🧭 Explore the project
 
@@ -324,6 +325,21 @@ Unequal repetitions on eight authored fixtures do not establish a general rankin
 
 [Inspected report, colored verdict comparison and limitations](docs/judge-model-comparison-20261109.md).
 
+## 🟪 Synthetic Build Release and Integration pilot
+
+Six authored evidence bundles exercise integration configuration failures,
+missing build dependencies, assertion failures, complete green evidence,
+missing evidence and stale evidence.
+
+The [pilot runner](eval_bri.py) evaluates classification labels and citation IDs
+with deterministic checks. It makes no live CI or release action and invokes no
+LLM judge. This is a supplied-evidence classification task, not a tool-calling agent.
+
+🟢 **58 offline tests passed on Linux.** 🟡 First Windows pilot run pending.
+These synthetic fixtures are not thesis results or real repository build logs.
+
+[Colored workflow, cases, scoring, limitations and Windows commands](docs/bri-pilot.md).
+
 ## 🧭 Learning and extension roadmap
 
 **🟦 Learn AI · 🟩 Portfolio evidence · 🟪 PhD relevance · 🟠 Planned work**
@@ -338,7 +354,7 @@ Unequal repetitions on eight authored fixtures do not establish a general rankin
 | 6. Structured evidence | ✅ Windows report inspected | 26 tests; 4/4 run; saved traces, timing, metadata and source hashes verified |
 | 7. Judge calibration | ✅ Windows report inspected | 41 tests; 7/8 agreement, one false negative, zero judge errors |
 | 8. Repeated runs and model comparison | ✅ Repeat and exploratory comparison reports inspected | Qwen: 7/8 each in four runs; Llama: 6/8 in one run; same eight fixtures |
-| 9. BRI evaluation cases | 🟪 Planned research adaptation | Build-failure diagnosis and release-evidence evaluation |
+| 9. BRI evaluation cases | 🟡 Synthetic pilot implemented; Linux tests passed | Six supplied-evidence classification cases; Windows model run pending |
 
 ### 🟪 Connection to Build Release and Integration Engineering
 
@@ -349,8 +365,9 @@ Unequal repetitions on eight authored fixtures do not establish a general rankin
 | Judge disagreement | Can a model evaluator misjudge an engineering answer? | Calibrated rubric and human-reviewed labels |
 | Preserved runs | Can a reviewer reproduce an evaluation procedure? | Structured records and repeated-run protocol |
 
-These are methodological connections. This repository currently contains
-time, counting, and general-knowledge cases, not BRI experiments or thesis results.
+These are methodological connections. The repository now includes time,
+counting, general-knowledge cases and six authored synthetic BRI fixtures.
+It contains no real-build BRI experiment or thesis results.
 
 ## 📚 Tutorial, adaptations, and scope
 
@@ -363,7 +380,8 @@ time, counting, and general-knowledge cases, not BRI experiments or thesis resul
 | 🧑‍⚖️ Verified extension | Judge calibration: 41 Windows tests and inspected 7/8 diagnostic agreement |
 | 🔁 Verified extension | Three same-model repeats inspected; same 7/8 pattern in each |
 | 🔎 Verified extension | One exploratory Llama judge run inspected: 6/8 agreement; no general ranking |
-| 🔬 Future extensions | Broader benchmarking and BRI cases |
+| 🟪 Implemented pilot | Six synthetic BRI classification cases; offline tests passed; real model run pending |
+| 🔬 Future extensions | Broader benchmarking and studies using identified real build artifacts |
 
 The agent does not use session memory or persistent storage. When adapting the
 previous memory-enabled agent, use unique thread IDs for independent cases,
