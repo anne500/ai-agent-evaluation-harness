@@ -1,5 +1,7 @@
 # 🧪 AI Agent Evaluation Harness
 
+![Project overview and reading map](assets/readme-overview.svg)
+
 🎨 [Shared architecture colors and diagram conventions](VISUAL_STYLE.md)
 
 ![Python](https://img.shields.io/badge/Python-3.14.4-3776AB?logo=python&logoColor=white)
@@ -30,12 +32,16 @@ The badges report the latest recorded four-case run, not live CI status.
 > Tutorial and selected learning extensions are complete at this checkpoint.
 > Real-build studies and broader benchmarking remain planned.
 
+<a id="explore-the-project"></a>
+
 ## 🧭 Explore the project
 
-[Architecture](#-architecture) · [Results](#-recorded-results) ·
-[Case 4](#-case-4-correct-answer-missing-tool-then-judge-disagreement) ·
-[Setup](#-windows-powershell-setup) ·
-[Evidence](#-evidence-map) · [Roadmap](#-learning-and-extension-roadmap)
+[🧩 Architecture](#architecture) · [🚀 Setup](#windows-powershell-setup) · [🧪 Results & verification](#recorded-results) · [🗂️ Evidence & guides](#evidence-map) · [🎨 Visual standard](VISUAL_STYLE.md)
+[Case 4](#case-4-correct-answer-missing-tool-then-judge-disagreement) ·
+[Setup](#windows-powershell-setup) ·
+[Evidence](#evidence-map) · [Roadmap](#learning-and-extension-roadmap)
+
+<a id="architecture"></a>
 
 ## 🧩 Architecture
 
@@ -73,7 +79,9 @@ flowchart TD
     class O,S output;
 ```
 
-### 🔍 What each evaluator can establish
+<a id="what-each-evaluator-can-establish"></a>
+
+### 🔬 What each evaluator can establish
 
 | Evaluator | Current evidence | Practical limit |
 | --- | --- | --- |
@@ -85,6 +93,8 @@ flowchart TD
 For cases expecting no tool, the rule requires an empty requested-tool list.
 For Case 4, the keyword check is skipped because the configured keyword is
 `None`; its printed `keyword=True` is not an answer-correctness finding.
+
+<a id="recorded-results"></a>
 
 ## 📊 Recorded results
 
@@ -106,7 +116,9 @@ All four runs reported zero agent errors. Stage ③ had three YES verdicts
 and one unavailable verdict, not a NO verdict for the fourth case.
 Each run's combined pass count was 3/4, for different underlying reasons.
 
-### 🚦 Latest bounded run by case
+<a id="latest-bounded-run-by-case"></a>
+
+### 📊 Latest bounded run by case
 
 | Case | Requested tools | Rule result | Judge | Interpretation |
 | --- | --- | --- | --- | --- |
@@ -117,6 +129,8 @@ Each run's combined pass count was 3/4, for different underlying reasons.
 
 See the [full verification record](docs/tutorial-verification.md) and
 [latest bounded-run log](bounded-judge-20261109-000546.log).
+
+<a id="case-4-correct-answer-missing-tool-then-judge-disagreement"></a>
 
 ## 🔀 Case 4: correct answer, missing tool, then judge disagreement
 
@@ -154,7 +168,9 @@ does not erase that trace evidence. Its cause remains unresolved.
 Prompt instructions also asked the agent to name the tool in its answer;
 the latest Case 4 answer did not do so. The current rules do not check that instruction.
 
-### ⏱️ Judge diagnostics
+<a id="judge-diagnostics"></a>
+
+### 🔬 Judge diagnostics
 
 | Diagnostic | Visible content | Stop reason | Output tokens | Approximate duration |
 | --- | --- | --- | ---: | ---: |
@@ -166,7 +182,9 @@ These were different configurations and individual calls, not a controlled
 latency benchmark. The first result establishes length-limited generation;
 it does not establish why no visible content was returned.
 
-## 🚥 Read verdicts and errors separately
+<a id="read-verdicts-and-errors-separately"></a>
+
+## 🚦 Read verdicts and errors separately
 
 ```mermaid
 flowchart TD
@@ -200,6 +218,8 @@ flowchart TD
 The current parser accepts only normalized `YES` or `NO`.
 It does not yet inspect generation metadata for truncation during full runs.
 A valid verdict is an evaluator output, not independent proof of correctness.
+
+<a id="windows-powershell-setup"></a>
 
 ## 🚀 Windows PowerShell setup
 
@@ -236,6 +256,8 @@ The client timeout setting is not a total wall-clock deadline for the full suite
 The agent has no explicit generation cap or client timeout in this checkpoint.
 The separate execution runner reuses that same agent configuration.
 
+<a id="evidence-map"></a>
+
 ## 🗂️ Evidence map
 
 | File | Purpose |
@@ -258,7 +280,9 @@ The initial basic-prompt run and separate diagnostics are documented from suppli
 terminal transcripts; standalone logs for them are not included.
 Snapshots preserve source versions. Rerunning them may produce different outputs.
 
-## 🔧 Execution-validation extension
+<a id="execution-validation-extension"></a>
+
+## 🧪 Execution-validation extension
 
 The separate [execution runner](eval_execution.py) adds exact argument checks,
 call/result pairing, error-status rejection, and tool-value validation.
@@ -279,7 +303,9 @@ This is one recorded agent run, not a reliability estimate. No judge was invoked
 This runner does not invoke an LLM judge. The results and chart above remain
 the recorded tutorial runs, not results from the new extension.
 
-## 📦 Structured JSON evidence
+<a id="structured-json-evidence"></a>
+
+## 🗂️ Structured JSON evidence
 
 The [execution runner](eval_execution.py) now checkpoints a versioned JSON report
 under `results/<run-id>/report.json`. It records call arguments, result IDs,
@@ -298,7 +324,9 @@ This is one inspected report, not a reliability estimate.
 Generated reports are ignored by Git until deliberately shared. No LLM judge is
 invoked by this runner, and the historical results chart remains unchanged.
 
-## 🧑‍⚖️ Judge calibration diagnostics
+<a id="judge-calibration-diagnostics"></a>
+
+## 🔬 Judge calibration diagnostics
 
 [Eight fixed synthetic examples](judge_calibration.py) test answer quality,
 recorded tool requests, and successful execution. Four labels are YES and four NO.
@@ -320,7 +348,9 @@ verdict is preserved rather than relabeled as a pass.
 
 [Colored flow diagram, fixtures, metrics, and Windows commands](docs/judge-calibration.md).
 
-## 🔁 Repeated calibration observations
+<a id="repeated-calibration-observations"></a>
+
+## 📊 Repeated calibration observations
 
 Three additional trials preserved the fixtures, prompts and judge settings.
 Each returned **7/8 agreement**, the same `requested_yes` false negative,
@@ -335,7 +365,9 @@ repeated observations of eight fixtures; they do not add independent cases
 or establish general reliability. Further identical reruns are unnecessary
 for this checkpoint.
 
-## 🔎 Exploratory judge-model comparison
+<a id="exploratory-judge-model-comparison"></a>
+
+## 🔬 Exploratory judge-model comparison
 
 | Judge | Runs | Agreement per run | False-negative fixtures |
 | --- | ---: | --- | --- |
@@ -347,6 +379,8 @@ in the requested model. Both judges returned valid verdicts without errors.
 Unequal repetitions on eight authored fixtures do not establish a general ranking.
 
 [Inspected report, colored verdict comparison and limitations](docs/judge-model-comparison-20261109.md).
+
+<a id="synthetic-build-release-and-integration-pilot"></a>
 
 ## 🟪 Synthetic Build Release and Integration pilot
 
@@ -370,9 +404,11 @@ These synthetic fixtures are not thesis results or real repository build logs.
 
 [Colored workflow, cases, scoring, limitations and Windows commands](docs/bri-pilot.md).
 
+<a id="learning-and-extension-roadmap"></a>
+
 ## 🧭 Learning and extension roadmap
 
-**🟦 Learn AI · 🟩 Portfolio evidence · 🟪 PhD relevance · 🟠 Planned work**
+**🟦 Learn AI · 🟩 Portfolio evidence · 🟪 PhD research · 🟠 Planned work**
 
 | Stage | Status | Deliverable |
 | --- | --- | --- |
@@ -386,6 +422,8 @@ These synthetic fixtures are not thesis results or real repository build logs.
 | 8. Repeated runs and model comparison | ✅ Repeat and exploratory comparison reports inspected | Qwen: 7/8 each in four runs; Llama: 6/8 in one run; same eight fixtures |
 | 9. BRI evaluation cases | ✅ Synthetic baseline inspected | 58 Windows tests; 4/6 full passes, missing detail citation and stale-evidence decision preserved |
 
+<a id="connection-to-build-release-and-integration-engineering"></a>
+
 ### 🟪 Connection to Build Release and Integration Engineering
 
 | Current learning | Potential BRI adaptation | Evidence still needed |
@@ -398,6 +436,8 @@ These synthetic fixtures are not thesis results or real repository build logs.
 These are methodological connections. The repository now includes time,
 counting, general-knowledge cases and six authored synthetic BRI fixtures.
 It contains no real-build BRI experiment or thesis results.
+
+<a id="tutorial-adaptations-and-scope"></a>
 
 ## 📚 Tutorial, adaptations, and scope
 
