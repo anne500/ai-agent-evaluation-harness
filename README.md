@@ -4,6 +4,9 @@
 
 🎨 [Shared architecture colors and diagram conventions](VISUAL_STYLE.md)
 
+> **📚 Tutorial foundation:** This learning project is based on [Darsh Shah's freeCodeCamp tutorial](https://www.freecodecamp.org/news/how-to-evaluate-ai-agents-with-an-llm-as-a-judge-harness-in-python/). See [Tutorial Acknowledgment and Attribution](#tutorial-acknowledgment-and-attribution) for the original source and the repository's extensions.
+
+
 ![Python](https://img.shields.io/badge/Python-3.14.4-3776AB?logo=python&logoColor=white)
 ![LangChain](https://img.shields.io/badge/LangChain-Local_Agent-166534)
 ![Ollama](https://img.shields.io/badge/Ollama-Local_Inference-222222)
@@ -439,7 +442,24 @@ It contains no real-build BRI experiment or thesis results.
 
 <a id="tutorial-adaptations-and-scope"></a>
 
-## 📚 Tutorial, adaptations, and scope
+<a id="tutorial-acknowledgment-and-attribution"></a>
+
+## 📚 Tutorial Acknowledgment and Attribution
+
+We acknowledge **Darsh Shah** as the author of the foundational tutorial published by **freeCodeCamp**:
+
+**[How to Evaluate AI Agents with an LLM-as-a-Judge Harness in Python](https://www.freecodecamp.org/news/how-to-evaluate-ai-agents-with-an-llm-as-a-judge-harness-in-python/)**  
+Published: July 17, 2026.
+
+| Credit and provenance | Description |
+| --- | --- |
+| 👨‍🏫 Original author | Darsh Shah |
+| 📚 Publisher | freeCodeCamp |
+| 🧱 Tutorial foundation | An agent evaluated on fixed cases using deterministic checks and a model judge, followed by a prompt change and rerun. |
+| 🛠️ Repository adaptations and extensions | Execution validation, structured evidence, bounded judge diagnostics, calibration and repeat runs, exploratory model comparison, and synthetic BRI cases. |
+
+The tutorial is credited for the original learning foundation. Repository-specific adaptations, experiments, verification records, and research connections are documented separately in the project documentation.
+
 
 | Layer | Included |
 | --- | --- |
