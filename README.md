@@ -1,5 +1,7 @@
 # 🧪 AI Agent Evaluation Harness
 
+🎨 [Shared architecture colors and diagram conventions](VISUAL_STYLE.md)
+
 ![Python](https://img.shields.io/badge/Python-3.14.4-3776AB?logo=python&logoColor=white)
 ![LangChain](https://img.shields.io/badge/LangChain-Local_Agent-166534)
 ![Ollama](https://img.shields.io/badge/Ollama-Local_Inference-222222)
@@ -55,14 +57,20 @@ flowchart TD
     O --> J["🟪 Separate judge invocation"]
     R --> S["📋 Separate summaries + errors"]
     J --> S
-    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#172554
-    classDef green fill:#DCFCE7,stroke:#15803D,color:#14532D
-    classDef purple fill:#EDE9FE,stroke:#7C3AED,color:#3B0764
-    classDef amber fill:#FEF3C7,stroke:#B45309,color:#78350F
-    class C,R blue
-    class A,J purple
-    class W,K,N green
-    class T,O,S amber
+
+    %% Shared architecture palette: see VISUAL_STYLE.md
+    classDef default fill:#F8FAFC,stroke:#475569,color:#0F172A,stroke-width:2px;
+    classDef process fill:#DBEAFE,stroke:#2563EB,color:#172554,stroke-width:2px;
+    classDef model fill:#EDE9FE,stroke:#7C3AED,color:#3B0764,stroke-width:2px;
+    classDef store fill:#CCFBF1,stroke:#0F766E,color:#134E4A,stroke-width:2px;
+    classDef decision fill:#FEF3C7,stroke:#B45309,color:#78350F,stroke-width:2px;
+    classDef human fill:#FFEDD5,stroke:#C2410C,color:#7C2D12,stroke-width:2px;
+    classDef output fill:#DCFCE7,stroke:#15803D,color:#14532D,stroke-width:2px;
+    classDef failure fill:#FEE2E2,stroke:#B91C1C,color:#7F1D1D,stroke-width:2px;
+    class C,W,K,R process;
+    class A,J,N model;
+    class T decision;
+    class O,S output;
 ```
 
 ### 🔍 What each evaluator can establish
@@ -125,14 +133,20 @@ flowchart TD
     U --> V["🟢 Tool-name rule passes"]
     V --> J["🟠 Bounded judge returns NO"]
     J --> D["Preserve disagreement for analysis"]
-    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#172554
-    classDef green fill:#DCFCE7,stroke:#15803D,color:#14532D
-    classDef red fill:#FEE2E2,stroke:#DC2626,color:#7F1D1D
-    classDef amber fill:#FEF3C7,stroke:#B45309,color:#78350F
-    class Q,P blue
-    class U,V green
-    class B,F red
-    class J,D amber
+
+    %% Shared architecture palette: see VISUAL_STYLE.md
+    classDef default fill:#F8FAFC,stroke:#475569,color:#0F172A,stroke-width:2px;
+    classDef process fill:#DBEAFE,stroke:#2563EB,color:#172554,stroke-width:2px;
+    classDef model fill:#EDE9FE,stroke:#7C3AED,color:#3B0764,stroke-width:2px;
+    classDef store fill:#CCFBF1,stroke:#0F766E,color:#134E4A,stroke-width:2px;
+    classDef decision fill:#FEF3C7,stroke:#B45309,color:#78350F,stroke-width:2px;
+    classDef human fill:#FFEDD5,stroke:#C2410C,color:#7C2D12,stroke-width:2px;
+    classDef output fill:#DCFCE7,stroke:#15803D,color:#14532D,stroke-width:2px;
+    classDef failure fill:#FEE2E2,stroke:#B91C1C,color:#7F1D1D,stroke-width:2px;
+    class Q,B,U,D process;
+    class P,J decision;
+    class V output;
+    class F failure;
 ```
 
 The prompt change corrected the observed missing request. The later NO verdict
@@ -165,14 +179,22 @@ flowchart TD
     Y --> R["Compare with deterministic evidence"]
     N --> R
     E --> U["🟡 Evaluation unavailable"]
-    classDef green fill:#DCFCE7,stroke:#15803D,color:#14532D
-    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#172554
-    classDef amber fill:#FEF3C7,stroke:#B45309,color:#78350F
-    classDef red fill:#FEE2E2,stroke:#DC2626,color:#7F1D1D
-    class A,B,C,R blue
-    class Y green
-    class N,U amber
-    class E red
+
+    %% Shared architecture palette: see VISUAL_STYLE.md
+    classDef default fill:#F8FAFC,stroke:#475569,color:#0F172A,stroke-width:2px;
+    classDef process fill:#DBEAFE,stroke:#2563EB,color:#172554,stroke-width:2px;
+    classDef model fill:#EDE9FE,stroke:#7C3AED,color:#3B0764,stroke-width:2px;
+    classDef store fill:#CCFBF1,stroke:#0F766E,color:#134E4A,stroke-width:2px;
+    classDef decision fill:#FEF3C7,stroke:#B45309,color:#78350F,stroke-width:2px;
+    classDef human fill:#FFEDD5,stroke:#C2410C,color:#7C2D12,stroke-width:2px;
+    classDef output fill:#DCFCE7,stroke:#15803D,color:#14532D,stroke-width:2px;
+    classDef failure fill:#FEE2E2,stroke:#B91C1C,color:#7F1D1D,stroke-width:2px;
+    class U default;
+    class R process;
+    class A model;
+    class B,C,N decision;
+    class Y output;
+    class E failure;
 ```
 
 The current parser accepts only normalized `YES` or `NO`.
