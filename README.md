@@ -4,8 +4,8 @@
 ![LangChain](https://img.shields.io/badge/LangChain-Local_Agent-166534)
 ![Ollama](https://img.shields.io/badge/Ollama-Local_Inference-222222)
 ![Model](https://img.shields.io/badge/Model-Qwen_3.5_4B-7C3AED)
-![Rules](https://img.shields.io/badge/Latest_Observed_Rules-4_of_4-15803D)
-![Judge](https://img.shields.io/badge/Latest_Observed_Judge_YES-3_of_4-B45309)
+![Rules](https://img.shields.io/badge/Tutorial_Rules-4_of_4-15803D)
+![Judge](https://img.shields.io/badge/Tutorial_Judge_YES-3_of_4-B45309)
 
 **Run an agent → inspect its behavior → apply rules → ask a judge → compare the evidence.**
 
@@ -24,7 +24,8 @@ The badges report the latest recorded four-case run, not live CI status.
 > Execution validation passed 15 Windows offline tests and one four-case model run.
 > Judge calibration is verified: one inspected run gave 7/8 agreement and one false negative.
 > Three same-model repeats and one exploratory second-model comparison are verified.
-> A synthetic BRI pilot is implemented with offline tests; its first Windows model run is pending.
+> The synthetic BRI baseline is inspected: 4/6 complete passes, two preserved failures.
+> Tutorial and selected learning extensions are complete at this checkpoint.
 > Real-build studies and broader benchmarking remain planned.
 
 ## 🧭 Explore the project
@@ -335,7 +336,14 @@ The [pilot runner](eval_bri.py) evaluates classification labels and citation IDs
 with deterministic checks. It makes no live CI or release action and invokes no
 LLM judge. This is a supplied-evidence classification task, not a tool-calling agent.
 
-🟢 **58 offline tests passed on Linux.** 🟡 First Windows pilot run pending.
+🟢 **58 offline tests passed on Linux and Windows.** One inspected Qwen run
+produced **4/6 complete passes**, two model-output failures and zero output errors.
+The missing dependency case omitted its required detail citation. The stale
+build case was incorrectly labeled ready despite a commit mismatch.
+
+![Inspected synthetic BRI baseline checks](docs/assets/bri-pilot-results.svg)
+
+[Read the BRI baseline audit](docs/bri-pilot-verification-20261109.md).
 These synthetic fixtures are not thesis results or real repository build logs.
 
 [Colored workflow, cases, scoring, limitations and Windows commands](docs/bri-pilot.md).
@@ -354,7 +362,7 @@ These synthetic fixtures are not thesis results or real repository build logs.
 | 6. Structured evidence | ✅ Windows report inspected | 26 tests; 4/4 run; saved traces, timing, metadata and source hashes verified |
 | 7. Judge calibration | ✅ Windows report inspected | 41 tests; 7/8 agreement, one false negative, zero judge errors |
 | 8. Repeated runs and model comparison | ✅ Repeat and exploratory comparison reports inspected | Qwen: 7/8 each in four runs; Llama: 6/8 in one run; same eight fixtures |
-| 9. BRI evaluation cases | 🟡 Synthetic pilot implemented; Linux tests passed | Six supplied-evidence classification cases; Windows model run pending |
+| 9. BRI evaluation cases | ✅ Synthetic baseline inspected | 58 Windows tests; 4/6 full passes, missing detail citation and stale-evidence decision preserved |
 
 ### 🟪 Connection to Build Release and Integration Engineering
 
@@ -380,7 +388,7 @@ It contains no real-build BRI experiment or thesis results.
 | 🧑‍⚖️ Verified extension | Judge calibration: 41 Windows tests and inspected 7/8 diagnostic agreement |
 | 🔁 Verified extension | Three same-model repeats inspected; same 7/8 pattern in each |
 | 🔎 Verified extension | One exploratory Llama judge run inspected: 6/8 agreement; no general ranking |
-| 🟪 Implemented pilot | Six synthetic BRI classification cases; offline tests passed; real model run pending |
+| 🟪 Verified pilot | Six synthetic BRI cases; inspected 4/6 baseline, two model failures, no output errors |
 | 🔬 Future extensions | Broader benchmarking and studies using identified real build artifacts |
 
 The agent does not use session memory or persistent storage. When adapting the
