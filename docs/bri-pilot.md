@@ -1,7 +1,10 @@
 # 🟪 Extension 4: synthetic BRI evaluation pilot
 
-**🟢 Implemented; 58 offline tests passed on Linux, Python 3.12.14.
-🟡 First Windows tests and real model run for this pilot are pending.**
+**🟢 Verified: 58 tests passed on Linux (Python 3.12.14) and Windows
+(Python 3.14.4). One inspected Qwen model run produced 4/6 complete passes,
+two model-output failures and zero output errors.**
+
+[Read the baseline audit and colored results matrix](bri-pilot-verification-20261109.md).
 
 This learning extension classifies six authored Build Release and Integration
 evidence bundles. It is separate from the freeCodeCamp tutorial and previous
@@ -142,7 +145,7 @@ This is a small portfolio and learning bridge toward BRI evaluation.
 It provides no measured engineering-efficiency improvement, no human baseline,
 no held-out dataset, no artifact-authenticity validation and no real-build result.
 
-After the first report is inspected, suitable next research work would be
+The first report has been inspected. Suitable future research work would be
 identified real build artifacts, independently reviewed labels, baseline
 comparisons, evidence ablation and broader repeated-run evaluation.
 Those belong to a separately scoped evaluation study.
