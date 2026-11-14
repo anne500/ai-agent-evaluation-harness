@@ -35,6 +35,22 @@ The badges report the latest recorded four-case run, not live CI status.
 > Tutorial and selected learning extensions are complete at this checkpoint.
 > Real-build studies and broader benchmarking remain planned.
 
+## 🟦 Base tutorial
+
+The baseline evaluates a local two-tool agent with fixed cases, rule checks, and a model judge. The tutorial demonstrates a prompt change and rerun. [Darsh Shah’s freeCodeCamp tutorial: How to Evaluate AI Agents with an LLM-as-a-Judge Harness in Python](https://www.freecodecamp.org/news/how-to-evaluate-ai-agents-with-an-llm-as-a-judge-harness-in-python/)
+
+## 🧩 Extensions added in Project 3
+
+| Extension | What this project added |
+| --- | --- |
+| **Harness adaptations** | Added model configuration, bounded judge calls, strict verdict parsing, and separate reporting for errors and verdicts. |
+| **Execution validation** | Checked tool arguments, paired results, execution status, values, and the final answer. |
+| **Structured evidence** | Saved JSON runs and partial checkpoints with timing, metadata, and source hashes. |
+| **Judge calibration** | Recorded repeated same-model runs and an exploratory second-model comparison. |
+| **Synthetic BRI pilot** | Evaluated six build and release cases and preserved the two incomplete results alongside the four full passes. |
+
+See the [learning and extension roadmap](#learning-and-extension-roadmap) for the verification scope.
+
 <a id="explore-the-project"></a>
 
 ## 🧭 Explore the project
